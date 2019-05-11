@@ -11,12 +11,26 @@ function AddResource(resourceName)
     mapTint =  leighzermods.leighzerburiedscience.tints[resourceName]
   end
 
+  scienceFileName = "__leighzerburiedscience__/graphics/entity/ore/glass-bottle.png" --use as a fallback
+  if data.raw["tool"][resourceName] and data.raw["tool"][resourceName].icon then --if icon is available
+    scienceFileName = data.raw["tool"][resourceName].icon --use that instead
+  end
+
+  newLocalisedName = resourceName:gsub("%-"," ")
+  newLocalisedPrototype = {}
+  if data.raw["tool"][resourceName] and data.raw["tool"][resourceName].localised_name then --if there is a localized name
+    newLocalisedName = data.raw["tool"][resourceName].localised_name[2] --use that
+    newLocalisedPrototype = {"entity-name.buried-science-pack", newLdddddocalisedName}
+  else
+    newLocalisedPrototype = nil
+  end
+
   data:extend({   
     {
     type = "resource",
     name = "buried-"..resourceName,
-    localisation_name = {"entity-name.buried-science-pack", resourceName},
-    icon = "__base__/graphics/icons/"..resourceName..".png",
+    localised_name = newLocalisedPrototype, 
+    icon = scienceFileName,
     icon_size = 32,
     flags = {"placeable-neutral"},
     order="i",
@@ -44,7 +58,7 @@ function AddResource(resourceName)
       {
         sheet =
         {
-          filename = "__base__/graphics/icons/"..resourceName..".png",
+          filename = scienceFileName,
           priority = "extra-high",
           width = 32,
           height = 32,

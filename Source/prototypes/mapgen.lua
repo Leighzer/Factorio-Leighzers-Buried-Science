@@ -11,8 +11,8 @@ data:extend(
         name = "buried-"..resourceName,
         richness = true,
         order = orderStart .. orderInt,
-        category="resource",
-        localisation_name = {"autoplace-control-names.buried-science-pack", resourceName}
+        category="resource",         
+        localised_name = {"autoplace-control-names.buried-science-pack", resourceName}
     },
     {
     type = "noise-layer",

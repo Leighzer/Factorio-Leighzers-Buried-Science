@@ -9,7 +9,7 @@ function AddParticle(particleName)
       pictures =
       {
         {
-          filename = "__leighzerburiedscience__/graphics/entity/particle/"..particleName..".png",
+          filename = "__leighzerburiedscience__/graphics/entity/particle/science-pack-particle.png",
           priority = "extra-high",
           width = 16,
           height = 16,
