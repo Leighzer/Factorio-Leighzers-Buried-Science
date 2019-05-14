@@ -16,6 +16,7 @@ if not leighzermods.leighzerburiedscience then
     leighzermods.leighzerburiedscience.tints["advanced-logistic-science-pack"] = {r=1,g=0.1,b=1, a=1}--100, 0, 66.7
     
     leighzermods.leighzerburiedscience.excludeHighTechSciencesFromStartingArea = settings.startup["excludeHighTechSciencesFromStartingArea"].value
+    leighzermods.leighzerburiedscience.infiniteScience = settings.startup["infiniteScience"].value
     leighzermods.leighzerburiedscience.isStartingAreaEnabled = {}
 
     if leighzermods.leighzerburiedscience.excludeHighTechSciencesFromStartingArea then

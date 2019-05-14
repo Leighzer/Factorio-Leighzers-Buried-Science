@@ -6,7 +6,7 @@ function AddResource(resourceName)
     hasStartingAreaPlacement = leighzermods.leighzerburiedscience.isStartingAreaEnabled[resourceName]
   end
 
-  mapTint = {1,1,1,1}--pure white if not defined
+  mapTint = {r=1,g=1,b=1,a=1}--pure white if not defined
   if leighzermods.leighzerburiedscience.tints[resourceName] then
     mapTint =  leighzermods.leighzerburiedscience.tints[resourceName]
   end
@@ -48,7 +48,7 @@ function AddResource(resourceName)
       order = "x",
       base_density = 10,
       has_starting_area_placement = hasStartingAreaPlacement,
-      resource_index = resource_autoplace.get_next_resource_index() + 64,
+      resource_index = resource_autoplace.get_next_resource_index() + 12,
       regular_rq_factor_multiplier = 1.10,
       starting_rq_factor_multiplier = 1.5
     },
