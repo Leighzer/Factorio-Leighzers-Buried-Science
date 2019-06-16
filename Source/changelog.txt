@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.5
+  Changes:
+    - Added thumbnail.
+  Bugfixes:
+    - Fixed locale naming issues. Naming now uses existing language that the science pack items use. Should now work with any mod that adds science.
+
+---------------------------------------------------------------------------------------------------
 Version: 0.1.4
   Changes:
     - Added proper changelog.

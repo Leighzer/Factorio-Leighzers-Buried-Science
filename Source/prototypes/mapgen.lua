@@ -3,6 +3,14 @@ orderStart = "z-"
 orderInt = 1
 
 function AddMapGen(resourceName)
+
+newLocalisedPrototype = {}
+if data.raw["tool"][resourceName] and data.raw["tool"][resourceName].localised_name then --if there is a localized name    
+newLocalisedPrototype = data.raw["tool"][resourceName].localised_name -- use the name that is programmed in
+else
+newLocalisedPrototype = {"item-name."..resourceName} -- otherwise try pull the science pack name from locale
+end
+
 data:extend(
 {
 
@@ -12,7 +20,7 @@ data:extend(
         richness = true,
         order = orderStart .. orderInt,
         category="resource",         
-        localised_name = {"autoplace-control-names.buried-science-pack", resourceName}
+        localised_name = newLocalisedPrototype
     },
     {
     type = "noise-layer",

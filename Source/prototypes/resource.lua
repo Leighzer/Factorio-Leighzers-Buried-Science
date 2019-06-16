@@ -15,14 +15,12 @@ function AddResource(resourceName)
   if data.raw["tool"][resourceName] and data.raw["tool"][resourceName].icon then --if icon is available
     scienceFileName = data.raw["tool"][resourceName].icon --use that instead
   end
-
-  newLocalisedName = resourceName:gsub("%-"," ")
+  
   newLocalisedPrototype = {}
-  if data.raw["tool"][resourceName] and data.raw["tool"][resourceName].localised_name then --if there is a localized name
-    newLocalisedName = data.raw["tool"][resourceName].localised_name[2] --use that
-    newLocalisedPrototype = {"entity-name.buried-science-pack", newLdddddocalisedName}
+  if data.raw["tool"][resourceName] and data.raw["tool"][resourceName].localised_name then --if there is a localized name    
+    newLocalisedPrototype = data.raw["tool"][resourceName].localised_name -- use the name that they programmed in
   else
-    newLocalisedPrototype = nil
+    newLocalisedPrototype = {"item-name."..resourceName} -- otherwise pull the science pack name from locale
   end
 
   data:extend({   
