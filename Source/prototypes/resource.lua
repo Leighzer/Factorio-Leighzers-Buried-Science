@@ -29,7 +29,7 @@ function AddResource(resourceName)
     name = "buried-"..resourceName,
     localised_name = newLocalisedPrototype, 
     icon = scienceFileName,
-    icon_size = 32,
+    icon_size = 64,
     flags = {"placeable-neutral"},
     order="i",
     map_color = mapTint,--color used for ore patch when viewed from mini map
