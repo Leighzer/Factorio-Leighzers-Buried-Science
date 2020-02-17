@@ -50,15 +50,15 @@ function AddResource(resourceName)
       starting_rq_factor_multiplier = 1.5
     },
 
-    stage_counts = {80},
+    stage_counts = {1},
     stages =
       {
         sheet =
         {
           filename = scienceFileName,
           priority = "extra-high",
-          width = 32,
-          height = 32,
+          size = 64,
+          scale = 0.5,
           frame_count = 1,
           variation_count = 1,        
         }

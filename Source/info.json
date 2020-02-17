@@ -1,11 +1,11 @@
 {
   "name": "leighzerburiedscience",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "title": "Leighzer's Buried Science",
   "author": "Leighzer",
   "contact": "Please message me on the factorio forums my username is leighzer.",
   "homepage": "",
-  "factorio_version": "0.17",
-  "dependencies": [ "base >= 0.17.52"],
+  "factorio_version": "0.18",
+  "dependencies": [ "base >= 0.18.1"],
   "description": "Adds resource patches you can directly mine science packs out of."
 }

@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+  Changes:
+    - 0.18.1 update.
+  Bugfixes:
+    - Update particle type to "optimized-particle" from deprecated "particle" type.
+    - Change ore entity graphics to expect 64px sized science pack icons.
+
+---------------------------------------------------------------------------------------------------
 Version: 0.1.6
   Bugfixes:
     - 0.17.52 hotfix.
