@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.2
+  Changes:
+    - Update ordering of autoplace controls in new game menu.
+    - Update ordering of resources in editor menu.
+
+---------------------------------------------------------------------------------------------------
 Version: 0.2.1
   Bugfixes:
     - Fixed icon graphic for science pack in resources menu.

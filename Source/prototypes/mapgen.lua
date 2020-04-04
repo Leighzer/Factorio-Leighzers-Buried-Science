@@ -1,6 +1,5 @@
 
-orderStart = "z-"
-orderInt = 1
+local order = "zz-a"
 
 function AddMapGen(resourceName)
 
@@ -18,7 +17,7 @@ data:extend(
         type = "autoplace-control",
         name = "buried-"..resourceName,
         richness = true,
-        order = orderStart .. orderInt,
+        order = order,
         category="resource",         
         localised_name = newLocalisedPrototype
     },
@@ -27,5 +26,5 @@ data:extend(
     name = "buried-"..resourceName,
     },
 })
-orderInt = orderInt + 1
+order = order .. "a"
 end

@@ -1,3 +1,4 @@
+local order = "zz-a"
 
 function AddResource(resourceName)
   
@@ -31,7 +32,7 @@ function AddResource(resourceName)
     icon = scienceFileName,
     icon_size = 64,
     flags = {"placeable-neutral"},
-    order="i",
+    order=order,
     map_color = mapTint,--color used for ore patch when viewed from mini map
     minable =
     {     
@@ -65,5 +66,6 @@ function AddResource(resourceName)
       },
     }
   })
+  order = order .. "a"
 end
 
