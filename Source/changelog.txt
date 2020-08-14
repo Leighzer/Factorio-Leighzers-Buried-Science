@@ -1,5 +1,11 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.2.3
+Version: 0.2.5
+  Changes:
+    - Version bump to 1.0.
+  Bugfixes:
+    - Add optional dependency to Bob's Tech to gurantee science pack patches have graphics updates that Bob's Tech makes.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.4
   Changes:
     - Improved logic to determine scale of resource patch graphics
   Bugfixes:
