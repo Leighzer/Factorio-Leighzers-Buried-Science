@@ -27,17 +27,13 @@ function AddResource(resourceName)
       localisedName = {"item-name."..resourceName} -- otherwise try pull the science pack name from locale
   end  
 
-  local iconSize = 64
-  local scale = 0.5
+  local iconSize = 64  
   if data.raw["tool"][resourceName] and data.raw["tool"][resourceName].icon_size then
-    iconSize = data.raw["tool"][resourceName].icon_size
-    if iconSize == 32 then
-      scale = 1
-    end  
+    iconSize = data.raw["tool"][resourceName].icon_size    
   else
-    iconSize = 32
-    scale = 1
+    iconSize = 32    
   end
+  local scale = 32 / iconSize
 
   data:extend({   
     {

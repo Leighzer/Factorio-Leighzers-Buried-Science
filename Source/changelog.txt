@@ -1,6 +1,13 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.3
   Changes:
+    - Improved logic to determine scale of resource patch graphics
+  Bugfixes:
+    - Now adds resources patches in data-updates.lua to work with Bob's Tech (Bob's pack wasn't showing) and not have to add any dependencies. (Other mods can still get final say in data-final-fixes.lua)
+
+---------------------------------------------------------------------------------------------------
+Version: 0.2.3
+  Changes:
     - Removed option to make science patches infinite - there are other mods that do this.    
     - Code cleanup!
     - Ordering of resource menus is zzz-[scienceName] by default now so it makes a little more sense than before.
