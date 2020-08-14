@@ -1,7 +1,10 @@
-local order = "zz-a"
-
 function AddResource(resourceName)
   
+  local order = "zzz-" .. resourceName  
+  if leighzermods.leighzerburiedscience.orderOverride[resourceName] then
+    order = leighzermods.leighzerburiedscience.orderOverride[resourceName]  
+  end
+
   hasStartingAreaPlacement = true
   if leighzermods.leighzerburiedscience.isStartingAreaEnabled[resourceName] == true or leighzermods.leighzerburiedscience.isStartingAreaEnabled[resourceName] == false  then
     hasStartingAreaPlacement = leighzermods.leighzerburiedscience.isStartingAreaEnabled[resourceName]
@@ -9,7 +12,7 @@ function AddResource(resourceName)
 
   mapTint = {r=1,g=1,b=1,a=1}--pure white if not defined
   if leighzermods.leighzerburiedscience.tints[resourceName] then
-    mapTint =  leighzermods.leighzerburiedscience.tints[resourceName]
+    mapTint = leighzermods.leighzerburiedscience.tints[resourceName]
   end
 
   scienceFileName = "__leighzerburiedscience__/graphics/entity/ore/glass-bottle.png" --use as a fallback
@@ -17,20 +20,32 @@ function AddResource(resourceName)
     scienceFileName = data.raw["tool"][resourceName].icon --use that instead
   end
   
-  newLocalisedPrototype = {}
+  local localisedName = ""
   if data.raw["tool"][resourceName] and data.raw["tool"][resourceName].localised_name then --if there is a localized name    
-    newLocalisedPrototype = data.raw["tool"][resourceName].localised_name -- use the name that they programmed in
+      localisedName = data.raw["tool"][resourceName].localised_name -- use the name that is programmed in
   else
-    newLocalisedPrototype = {"item-name."..resourceName} -- otherwise pull the science pack name from locale
+      localisedName = {"item-name."..resourceName} -- otherwise try pull the science pack name from locale
+  end  
+
+  local iconSize = 64
+  local scale = 0.5
+  if data.raw["tool"][resourceName] and data.raw["tool"][resourceName].icon_size then
+    iconSize = data.raw["tool"][resourceName].icon_size
+    if iconSize == 32 then
+      scale = 1
+    end  
+  else
+    iconSize = 32
+    scale = 1
   end
 
   data:extend({   
     {
     type = "resource",
     name = "buried-"..resourceName,
-    localised_name = newLocalisedPrototype, 
+    localised_name = localisedName, 
     icon = scienceFileName,
-    icon_size = 64,
+    icon_size = iconSize,
     flags = {"placeable-neutral"},
     order=order,
     map_color = mapTint,--color used for ore patch when viewed from mini map
@@ -58,14 +73,13 @@ function AddResource(resourceName)
         {
           filename = scienceFileName,
           priority = "extra-high",
-          size = 64,
-          scale = 0.5,
+          size = iconSize,
+          scale = scale,
           frame_count = 1,
           variation_count = 1,        
         }
       },
     }
-  })
-  order = order .. "a"
+  })  
 end
 

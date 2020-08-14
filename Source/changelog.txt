@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.3
+  Changes:
+    - Removed option to make science patches infinite - there are other mods that do this.    
+    - Code cleanup!
+    - Ordering of resource menus is zzz-[scienceName] by default now so it makes a little more sense than before.
+    - Added custom order overrides for vanilla science packs and Bob's Tech advanced logistic science pack so they are order by complexity/progression level rather than name.
+    - Removed unused graphics.
+    - Add resource patches in data.lua instead of data-final-fixes.lua just in case other mods want the final say.
+    - Added option that data.tool[scienceName].leighzerburiedscienceIgnore can be set so that the dynamic resource builder ignores that science.
+  Bugfixes:
+    - Now should work with science packs that have icon_size = 32
+
+---------------------------------------------------------------------------------------------------
 Version: 0.2.2
   Changes:
     - Update ordering of autoplace controls in new game menu.

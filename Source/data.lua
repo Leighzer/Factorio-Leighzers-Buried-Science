@@ -15,8 +15,7 @@ if not leighzermods.leighzerburiedscience then
     leighzermods.leighzerburiedscience.tints["space-science-pack"] = {r=222/255, g=222/255, b=222/255, a = 1}--57.3,57.3,57.3
     leighzermods.leighzerburiedscience.tints["advanced-logistic-science-pack"] = {r=1,g=0.1,b=1, a=1}--100, 0, 66.7
     
-    leighzermods.leighzerburiedscience.excludeHighTechSciencesFromStartingArea = settings.startup["excludeHighTechSciencesFromStartingArea"].value
-    leighzermods.leighzerburiedscience.infiniteScience = settings.startup["infiniteScience"].value
+    leighzermods.leighzerburiedscience.excludeHighTechSciencesFromStartingArea = settings.startup["excludeHighTechSciencesFromStartingArea"].value    
     leighzermods.leighzerburiedscience.isStartingAreaEnabled = {}
 
     if leighzermods.leighzerburiedscience.excludeHighTechSciencesFromStartingArea then
@@ -42,7 +41,29 @@ if not leighzermods.leighzerburiedscience then
             leighzermods.leighzerburiedscience.isStartingAreaEnabled["advanced-logistic-science-pack"] = true
         end
     end
+
+    leighzermods.leighzerburiedscience.orderOverride = {}
+
+    leighzermods.leighzerburiedscience.orderOverride["automation-science-pack"] = "zz-a"
+    leighzermods.leighzerburiedscience.orderOverride["logistic-science-pack"] = "zz-b"
+    leighzermods.leighzerburiedscience.orderOverride["military-science-pack"] = "zz-c"
+    leighzermods.leighzerburiedscience.orderOverride["chemical-science-pack"] = "zz-d"
+    leighzermods.leighzerburiedscience.orderOverride["production-science-pack"] = "zz-e"
+    leighzermods.leighzerburiedscience.orderOverride["utility-science-pack"] = "zz-f"
+    leighzermods.leighzerburiedscience.orderOverride["space-science-pack"] = "zz-g"
+    if mods["bobtech"] then
+        leighzermods.leighzerburiedscience.orderOverride["advanced-logistic-science-pack"] = "zz-da"
+    end
 end
 
+require("functions.resource")
+require("functions.particle")
+require("functions.mapgen")
+require("functions.buried-science-builder")
 
-
+--for each item in data.raw
+for k, v in pairs(data.raw["tool"]) do
+    if string.find(k,"%-science%-pack") and (not v.leighzerburiedscienceIgnore) then --if the name contains "science-pack" and we should not ignore the science pack
+        AddBuriedScience(k)--add a resource patch for it
+    end
+end
