@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.0
+  Changes:
+    - Add dependency to library mod.    
+    - Code refactor similar to what was done for Leighzer's Science Ores.
+    - Disabled morphite to science pack recipes from being generated.    
+    - See Compatibility.md for instructions on customizing science pack resource patches.
+---------------------------------------------------------------------------------------------------
 Version: 0.2.5
   Changes:
     - Version bump to 1.0.

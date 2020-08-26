@@ -1,42 +1,41 @@
-function AddResource(resourceName)
+function AddResource(sciencePackItem)
   
+  local resourceName = sciencePackItem.name
+
   local order = "zzz-" .. resourceName  
-  if leighzermods.leighzerburiedscience.orderOverride[resourceName] then
-    order = leighzermods.leighzerburiedscience.orderOverride[resourceName]  
+  if data.raw.tool[resourceName] and data.raw.tool[resourceName].order then
+    order = "zzz-" .. data.raw.tool[resourceName].order
   end
 
-  hasStartingAreaPlacement = true
-  if leighzermods.leighzerburiedscience.isStartingAreaEnabled[resourceName] == true or leighzermods.leighzerburiedscience.isStartingAreaEnabled[resourceName] == false  then
-    hasStartingAreaPlacement = leighzermods.leighzerburiedscience.isStartingAreaEnabled[resourceName]
-  end
+  hasStartingAreaPlacement = sciencePackItem.leighzerburiedscienceStartingAreaEnabled or false  
 
-  mapTint = {r=1,g=1,b=1,a=1}--pure white if not defined
-  if leighzermods.leighzerburiedscience.tints[resourceName] then
-    mapTint = leighzermods.leighzerburiedscience.tints[resourceName]
+  mapTint = leighzermods.tints["white"]
+  if leighzermods.tints[sciencePackItem.leighzerburiedscienceMapTintName] then
+    mapTint = leighzermods.tints[sciencePackItem.leighzerburiedscienceMapTintName]
   end
 
   scienceFileName = "__leighzerburiedscience__/graphics/entity/ore/glass-bottle.png" --use as a fallback
-  if data.raw["tool"][resourceName] and data.raw["tool"][resourceName].icon then --if icon is available
-    scienceFileName = data.raw["tool"][resourceName].icon --use that instead
+  if data.raw.tool[resourceName] and data.raw.tool[resourceName].icon then --if icon is available
+    scienceFileName = data.raw.tool[resourceName].icon --use that instead
   end
   
   local localisedName = ""
-  if data.raw["tool"][resourceName] and data.raw["tool"][resourceName].localised_name then --if there is a localized name    
-      localisedName = data.raw["tool"][resourceName].localised_name -- use the name that is programmed in
+  if data.raw.tool[resourceName] and data.raw.tool[resourceName].localised_name then --if there is a localized name    
+      localisedName = data.raw.tool[resourceName].localised_name -- use the name that is programmed in
   else
       localisedName = {"item-name."..resourceName} -- otherwise try pull the science pack name from locale
   end  
 
   local iconSize = 64  
-  if data.raw["tool"][resourceName] and data.raw["tool"][resourceName].icon_size then
-    iconSize = data.raw["tool"][resourceName].icon_size    
+  if data.raw.tool[resourceName] and data.raw.tool[resourceName].icon_size then
+    iconSize = data.raw.tool[resourceName].icon_size    
   else
     iconSize = 32    
   end
   local scale = 32 / iconSize
 
   data:extend({   
-    {
+    {      
     type = "resource",
     name = "buried-"..resourceName,
     localised_name = localisedName, 
@@ -61,7 +60,6 @@ function AddResource(resourceName)
       regular_rq_factor_multiplier = 1.10,
       starting_rq_factor_multiplier = 1.5
     },
-
     stage_counts = {1},
     stages =
       {
@@ -75,7 +73,8 @@ function AddResource(resourceName)
           variation_count = 1,        
         }
       },
-    }
+      leighzermorphiteDisabled = true, -- disable morphite to science pack recipes
+    },
   })  
 end
 

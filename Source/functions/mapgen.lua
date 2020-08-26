@@ -1,13 +1,15 @@
-function AddMapGen(resourceName)
+function AddMapGen(sciencePackItem)
+
+    local resourceName = sciencePackItem.name
 
     local order = "zzz-" .. resourceName
-    if leighzermods.leighzerburiedscience.orderOverride[resourceName] then
-        order = leighzermods.leighzerburiedscience.orderOverride[resourceName]  
+    if data.raw.tool[resourceName] and data.raw.tool[resourceName].order then
+        order = "zzz="..data.raw.tool[resourceName].order
     end
 
     local localisedName = ""
-    if data.raw["tool"][resourceName] and data.raw["tool"][resourceName].localised_name then --if there is a localized name    
-        localisedName = data.raw["tool"][resourceName].localised_name -- use the name that is programmed in
+    if data.raw.tool[resourceName] and data.raw.tool[resourceName].localised_name then --if there is a localized name    
+        localisedName = data.raw.tool[resourceName].localised_name -- use the name that is programmed in
     else
         localisedName = {"item-name."..resourceName} -- otherwise try pull the science pack name from locale
     end
@@ -24,8 +26,8 @@ function AddMapGen(resourceName)
             localised_name = localisedName
         },
         {
-        type = "noise-layer",
-        name = "buried-"..resourceName,
+            type = "noise-layer",
+            name = "buried-"..resourceName,
         },
     })    
 end

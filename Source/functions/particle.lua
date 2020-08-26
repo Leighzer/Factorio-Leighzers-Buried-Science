@@ -1,9 +1,9 @@
-function AddParticle(particleName)
+function AddParticle(sciencePackItem)
   data:extend(
   {
     {--prototype for particles that fly out when you hand mine the ore in the ground
       type = "optimized-particle",
-      name = "buried-"..particleName.."-particle",
+      name = "buried-"..sciencePackItem.name.."-particle",
       flags = {"not-on-map"},
       life_time = 180,
       pictures =

@@ -1,11 +1,16 @@
 require("functions.resource")
 require("functions.particle")
 require("functions.mapgen")
-require("functions.buried-science-builder")
+
+local function AddBuriedScience(sciencePackItem)    
+    AddParticle(sciencePackItem)--particle.lua
+    AddResource(sciencePackItem)--resource.lua
+    AddMapGen(sciencePackItem)--mapgen.lua
+end
 
 --for each item in data.raw
-for k, v in pairs(data.raw["tool"]) do
-    if string.find(k,"%-science%-pack") and (not v.leighzerburiedscienceIgnore) then --if the name contains "science-pack" and we should not ignore the science pack
-        AddBuriedScience(k)--add a resource patch for it
+for k, v in pairs(data.raw.tool) do
+    if (not v.leighzerburiedscienceDisabled) then 
+        AddBuriedScience(v)--add a resource patch for it
     end
 end
