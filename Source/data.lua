@@ -3,53 +3,49 @@ if not leighzermods then --generic mod variable to store information that may be
 end
 
 if not leighzermods.leighzerburiedscience then
-    leighzermods.leighzerburiedscience = {} 
+    leighzermods.leighzerburiedscience = {}     
 end
 
 local vanillaSciencePackData = {}
 vanillaSciencePackData["automation-science-pack"] = {
-    leighzerburiedscienceDisabled = false,    
-    leighzerburiedscienceMapTintName = "fire_brick",
-    leighzerburiedscienceStartingAreaEnabled = true
+    disabled = false,    
+    mapTintName = "fire_brick",
+    startingAreaEnabled = true
 }
 vanillaSciencePackData["logistic-science-pack"] = {
-    leighzerburiedscienceDisabled = false,    
-    leighzerburiedscienceMapTintName = "lime_green",
-    leighzerburiedscienceStartingAreaEnabled = true
+    disabled = false,    
+    mapTintName = "lime_green",
+    startingAreaEnabled = true
 }
 vanillaSciencePackData["military-science-pack"] = {
-    leighzerburiedscienceDisabled = false,    
-    leighzerburiedscienceMapTintName = "light_slate_gray",
-    leighzerburiedscienceStartingAreaEnabled = true
+    disabled = false,    
+    mapTintName = "light_slate_gray",
+    startingAreaEnabled = true
 }
 vanillaSciencePackData["chemical-science-pack"] = {
-    leighzerburiedscienceDisabled = false,    
-    leighzerburiedscienceMapTintName = "cyan",
-    leighzerburiedscienceStartingAreaEnabled = false
+    disabled = false,    
+    mapTintName = "cyan",
+    startingAreaEnabled = false
 }
 vanillaSciencePackData["production-science-pack"] = {
-    leighzerburiedscienceDisabled = false,    
-    leighzerburiedscienceMapTintName = "dark_orchid",
-    leighzerburiedscienceStartingAreaEnabled = false
+    disabled = false,    
+    mapTintName = "dark_orchid",
+    startingAreaEnabled = false
 }
 vanillaSciencePackData["utility-science-pack"] = {
-    leighzerburiedscienceDisabled = false,    
-    leighzerburiedscienceMapTintName = "golden_rod",
-    leighzerburiedscienceStartingAreaEnabled = false    
+    disabled = false,    
+    mapTintName = "golden_rod",
+    startingAreaEnabled = false    
 }
 vanillaSciencePackData["space-science-pack"] = {
-    leighzerburiedscienceDisabled = false,    
-    leighzerburiedscienceMapTintName = "white",
-    leighzerburiedscienceStartingAreaEnabled = false
+    disabled = false,    
+    mapTintName = "white",
+    startingAreaEnabled = false
 }
 
+-- set leighzerburiedscience customization data on the science pack
 for k,v in pairs(data.raw.tool) do -- for each science pack item
     if (vanillaSciencePackData[k]) then -- if we have data for it
-        for kk,vv in pairs(vanillaSciencePackData[k]) do
-            if (v[kk] == nil) then -- if there already isn't a value there
-                v[kk] = vv -- load each field into the item prototype
-                -- our dynamic resource creator will examine these in data-updates.lua and use them to make decisions 
-            end
-        end
+        v.leighzerburiedscience = vanillaSciencePackData[k] -- load buried science data into the science pack item
     end
 end
